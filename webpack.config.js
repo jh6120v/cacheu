@@ -8,6 +8,8 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: 'cache.min.js',
+    library: 'Cache',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
