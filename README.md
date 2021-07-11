@@ -9,14 +9,14 @@ When you use SPA mode to run website, if you don't want to save data in store(re
 
 ## Install
 ```
-npm install @jh6120v/simple-frontend-cache --save
+npm install simple-frontend-cache --save
 ```
 
 ## Usage
 ***
 ### Create cache
 ```
-import Cache from '@jh6120v/simple-frontend-cache';
+import Cache from 'simple-frontend-cache';
 ```
 
 ## Interface
@@ -72,7 +72,7 @@ import Cache from '@jh6120v/simple-frontend-cache';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'app';
-import Cache from '@jh6120v/simple-frontend-cache';
+import Cache from 'simple-frontend-cache';
 
 Cache.create({
   ttl: 600,
@@ -88,7 +88,7 @@ ReactDOM.render(<App />, document.getElementById('app'));
 #### App.js
 ```
 import React from 'react';
-import Cache from '@jh6120v/simple-frontend-cache';
+import Cache from 'simple-frontend-cache';
 
 const App = () => {
   // Get value
