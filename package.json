@@ -2,10 +2,11 @@
   "name": "@jh6120v/simple-frontend-cache",
   "version": "0.0.1",
   "description": "Cache data in browser memory",
-  "main": "dist/cache.min.js",
+  "main": "./dist/cache.min.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/*"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,10 @@
   "module": "dist/cache.min.js",
   "devDependencies": {
     "@babel/core": "^7.14.6",
-    "babel-loader": "^8.2.2"
+    "@babel/eslint-parser": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.30.0",
+    "jest": "^27.0.6"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
