@@ -1,6 +1,6 @@
 {
   "name": "@jh6120v/simple-frontend-cache",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Cache data in browser memory",
   "main": "dist/cache.min.js",
   "scripts": {

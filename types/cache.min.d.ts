@@ -3,7 +3,7 @@ declare interface config {
     cleanup: number
 }
 
-export class Cache {
+export default class {
     static config: config;
     static data: object;
     constructor(config: config);
