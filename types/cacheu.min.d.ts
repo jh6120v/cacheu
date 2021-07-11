@@ -7,7 +7,7 @@ export default class {
     static config: config;
     static data: object;
     constructor(config: config);
-    static create(config: object): Cache;
+    static create(config: config);
     static set(key: string, value: any, expire: number): void;
     static get(key: string): any | null;
     static has(key: string): boolean;

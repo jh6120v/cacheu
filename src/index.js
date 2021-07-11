@@ -1,4 +1,4 @@
-class Cache {
+class Cacheu {
   /**
    * ttl: Data retention times(seconds)
    * cleanup: Periodically clean up expired data in times(seconds)
@@ -16,22 +16,22 @@ class Cache {
    * @param config
    */
   constructor(config = {}) {
-    Cache.config = {
-      ...Cache.config,
+    Cacheu.config = {
+      ...Cacheu.config,
       ...config,
     }
 
-    setInterval(Cache.cleanup, Cache.config.cleanup * 1000);
+    setInterval(Cacheu.cleanup, Cacheu.config.cleanup * 1000);
   }
 
   /**
    * Create Cache data
    *
    * @param config
-   * @returns {Cache}
+   * @returns {Cacheu}
    */
   static create(config) {
-    return new Cache(config);
+    new Cacheu(config);
   }
 
   /**
@@ -106,12 +106,12 @@ class Cache {
    * Check and clean all expired data
    */
   static cleanup() {
-    for (const [key, value] of Object.entries(Cache.data)) {
-      if (Cache.isExpired(value.expire)) {
-        Cache.remove(key);
+    for (const [key, value] of Object.entries(Cacheu.data)) {
+      if (Cacheu.isExpired(value.expire)) {
+        Cacheu.remove(key);
       }
     }
   }
 }
 
-export default Cache;
+export default Cacheu;
