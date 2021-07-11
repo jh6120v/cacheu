@@ -19,5 +19,6 @@
     "es6": true,
     "browser": true,
     "jest": true
-  }
+  },
+  "ignorePatterns": ["types/*.ts"]
 }
