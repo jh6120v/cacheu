@@ -1,0 +1,14 @@
+node_modules
+package-lock.json
+
+src
+
+test
+
+.gitignore
+.npmignore
+
+.babelrc
+.eslintrc
+
+webpack.config.js
