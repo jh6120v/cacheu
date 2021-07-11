@@ -4,8 +4,9 @@ Cache data in browser memory.
 
 When you use SPA mode to run website, if you don't want to save data in store(redux or vuex) or window object, you can use this.
 
+![NPM](https://img.shields.io/npm/l/simple-frontend-cache)
 ![build](https://img.shields.io/badge/build-passing-success.svg)
-![npm package](https://img.shields.io/badge/npm%20package-0.0.1-success.svg)
+![npm](https://img.shields.io/npm/v/simple-frontend-cache)
 
 ## Install
 ```
