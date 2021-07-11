@@ -1,8 +1,8 @@
 {
   "name": "@jh6120v/simple-frontend-cache",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Cache data in browser memory",
-  "main": "./dist/cache.min.js",
+  "main": "dist/cache.min.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest",
@@ -18,18 +18,6 @@
     "url": "https://github.com/jh6120v/simple-frontend-cache/issues"
   },
   "homepage": "https://github.com/jh6120v/simple-frontend-cache#readme",
-  "exports": {
-    ".": [
-      {
-        "import": "./dist/cache.min.js",
-        "require": "./dist/cache.min.js",
-        "default": "./dist/cache.min.js"
-      },
-      "./dist/cache.min.js"
-    ],
-    "./package.json": "./package.json"
-  },
-  "module": "dist/cache.min.js",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
