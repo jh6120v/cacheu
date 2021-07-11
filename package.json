@@ -1,8 +1,8 @@
 {
-  "name": "simple-frontend-cache",
-  "version": "0.1.0",
-  "description": "Cache data in browser memory",
-  "main": "dist/cache.min.js",
+  "name": "cacheu",
+  "version": "0.0.1",
+  "description": "Cache your data in browser memory",
+  "main": "dist/cacheu.min.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jh6120v/simple-frontend-cache.git"
+    "url": "git+https://github.com/jh6120v/cacheu.git"
   },
   "author": "James Yu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jh6120v/simple-frontend-cache/issues"
+    "url": "https://github.com/jh6120v/cacheu/issues"
   },
-  "homepage": "https://github.com/jh6120v/simple-frontend-cache#readme",
+  "homepage": "https://github.com/jh6120v/cacheu#readme",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
@@ -34,5 +34,5 @@
     "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2"
   },
-  "types": "types/cache.min.d.ts"
+  "types": "types/cacheu.min.d.ts"
 }

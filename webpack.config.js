@@ -7,8 +7,8 @@ module.exports = {
   ],
   output: {
     path: resolve('dist'),
-    filename: 'cache.min.js',
-    library: 'Cache',
+    filename: 'cacheu.min.js',
+    library: 'Cacheu',
     libraryTarget: 'umd'
   },
   module: {
