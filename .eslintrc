@@ -1,12 +1,12 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "no-console": 0,
     "no-restricted-syntax": 0,
     "eol-last": 0,
     "indent": [
       "error",
-      4,
+      2,
       {
         "SwitchCase": 1
       }
