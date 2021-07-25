@@ -1,4 +1,6 @@
 class Cacheu {
+  static PERSIST_KEY = 'CACHEU_DATA';
+
   /**
    * ttl: Data retention times(seconds)
    * cleanup: Periodically clean up expired data in times(seconds)
@@ -8,17 +10,43 @@ class Cacheu {
   static config = {
     ttl: 600,
     cleanup: 3600,
+    persistMode: false,
   };
 
   static data = {};
+
+  static persistData = {};
 
   /**
    * @param config
    */
   constructor(config = {}) {
+    if (config?.persistMode === true && !localStorage) {
+      config.persistMode = false;
+    }
+
     Cacheu.config = {
       ...Cacheu.config,
       ...config,
+    };
+
+    if (Cacheu.config.persistMode) {
+      try {
+        const recoveryData = localStorage.getItem(Cacheu.PERSIST_KEY);
+        if (recoveryData) {
+          const parseData = JSON.parse(recoveryData);
+
+          // shallow copy
+          Cacheu.data = { ...parseData };
+          Cacheu.persistData = { ...parseData };
+
+          // check persist data is available
+          Cacheu.cleanup();
+        }
+      } catch (e) {
+        // if JSON.parse() get any error
+        console.error(e);
+      }
     }
 
     setInterval(Cacheu.cleanup, Cacheu.config.cleanup * 1000);
@@ -31,7 +59,7 @@ class Cacheu {
    * @returns {Cacheu}
    */
   static create(config) {
-    new Cacheu(config);
+    return new Cacheu(config);
   }
 
   /**
@@ -40,11 +68,24 @@ class Cacheu {
    * @param key
    * @param value
    * @param expire
+   * @param persist
    */
-  static set(key, value, expire = this.config.ttl) {
-    this.data[key] = {
+  static set(key, value, expire = this.config.ttl, persist = false) {
+    const data = {
       expire: expire === 0 ? 0 : Date.now() + expire * 1000,
       value,
+    };
+
+    this.data[key] = data;
+
+    if (persist) {
+      try {
+        this.persistData[key] = data;
+        localStorage.setItem(Cacheu.PERSIST_KEY, JSON.stringify(this.persistData));
+      } catch (e) {
+        // if JSON.stringify() get any error
+        console.error(e);
+      }
     }
   }
 
@@ -70,7 +111,7 @@ class Cacheu {
    * @returns {boolean}
    */
   static has(key) {
-    const data = this.data?.[key];
+    const data = this.data[key];
     return !!(data && !this.isExpired(data.expire));
   }
 
@@ -81,6 +122,24 @@ class Cacheu {
    */
   static remove(key) {
     delete this.data[key];
+
+    if (this.persistData?.[key]) {
+      try {
+        delete this.persistData[key];
+
+        // when no data in persist data, remove all data from localStorage
+        if (Object.keys(this.persistData).length === 0) {
+          localStorage.removeItem(Cacheu.PERSIST_KEY);
+
+          return;
+        }
+
+        localStorage.setItem(Cacheu.PERSIST_KEY, JSON.stringify(this.persistData));
+      } catch (e) {
+        // if JSON.stringify() get any error
+        console.error(e);
+      }
+    }
   }
 
   /**
@@ -88,6 +147,9 @@ class Cacheu {
    */
   static removeAll() {
     this.data = {};
+    this.persistData = {};
+
+    localStorage.removeItem(this.PERSIST_KEY);
   }
 
   /**
