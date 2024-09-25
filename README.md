@@ -21,48 +21,40 @@ import Cacheu from 'cacheu';
 
 ## Interface
 ***
-### 1. Cacheu.create(Object)
+### 1. Cache.create(Object): void
+| Property name |  Type  | Default | Description                                 | 
+|:--------------|:------:|:-------:|:--------------------------------------------|
+| ttl           | number | 600(s)  | The time the data is kept                   |
+| cleanup       | number | 3600(s) | Time to automatically clean up expired data |
+| persistPrefixKey | string |    CACHE     | prefix key stored in localStorage                                            |
 
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| ttl  | Integer | 600(s) | The time the data is kept |
-| cleanup  | Integer | 3600(s) | Time to automatically clean up expired data |
+### 2. Cache.set(key, value, expires, persist): void
+| Property name |  Type   |         Default         | Description                                                             | 
+|:--------------|:-------:|:-----------------------:|:------------------------------------------------------------------------|
+| key           | string  |           N/A           | Recognizable and unique name in the cache                               |
+| value         |   any   |           N/A           | Stored value                                                            |
+| expires       | number  | 600(s) <br/>same as ttl | Expiration time set for a single data, set to 0 for permanent existence |
+| persist       | boolean |          false          | Whether to persist data                                                                        |
 
-### 2. Cacheu.set(key, value, expire)
+### 3. Cache.get(key, defaultValue): any
+| Property name |    Type     | Default | Description                               | 
+|:--------------|:-----------:|:-----:|:------------------------------------------|
+| key           |   string    |   N/A | Recognizable and unique name in the cache |
+| defaultValue  | string/null |  null   | default value                             |
 
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| key | String | N/A | Recognizable and unique name in the cache |
-| value | Any | N/A | Stored value |
-| expire | Integer | 600(s) | Expiration time set for a single data, set to 0 for permanent existence |
+### 4. Cache.has(key): boolean
 
-### 3. Cacheu.get(key)
+| Property name |  Type  | Default | Description | 
+| :---- |:------:| :----: | :---- |
+| key | string | N/A | Recognizable and unique name in the cache |
 
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| key | String | N/A | Recognizable and unique name in the cache |
+### 5. Cache.remove(key): void
+| Property name |  Type  | Default | Description | 
+| :---- |:------:| :----: | :---- |
+| key | string | N/A | Recognizable and unique name in the cache |
 
-### 4. Cacheu.has(key)
-
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| key | String | N/A | Recognizable and unique name in the cache |
-
-### 5. Cacheu.remove(key)
-
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| key | String | N/A | Recognizable and unique name in the cache |
-
-### 6. Cacheu.removeAll()
-
-### 7. Cacheu.isExpired(time)
-
-| Property name | Type | Default | Description | 
-| :---- | :----: | :----: | :---- |
-| time | Integer | N/A | Timestamp |
-
-### 8. Cacheu.cleanup()
+### 6. Cache.removeAll(): void
+- remove all cache data
 
 ## Getting Started
 ***
@@ -76,11 +68,12 @@ import Cacheu from 'cacheu';
 
 Cacheu.create({
   ttl: 600,
-  cleanup: 3600
+  cleanup: 3600,
+  persistPrefixKey: 'CACHE',
 });
 
 // Set value
-Cacheu.set('name', 'James');
+Cacheu.set('name', 'James', Cache.config.ttl, true);
 
 ReactDOM.render(<App />, document.getElementById('app'));
 ```

@@ -1,6 +1,6 @@
 {
   "name": "cacheu",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Cache your data in browser memory",
   "main": "dist/cacheu.min.js",
   "scripts": {
@@ -19,20 +19,33 @@
   },
   "homepage": "https://github.com/jh6120v/cacheu#readme",
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/eslint-parser": "^7.14.7",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.30.0",
-    "jest": "^27.0.6"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-transform-classes": "^7.14.5",
-    "@babel/plugin-transform-runtime": "^7.14.5",
-    "@babel/preset-env": "^7.14.7",
+    "@babel/core": "7.25.2",
+    "@babel/eslint-parser": "7.25.1",
+    "@babel/plugin-transform-class-properties": "^7.18.6",
+    "@babel/plugin-transform-class-static-block": "^7.21.0",
+    "@babel/plugin-transform-private-methods": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.25.4",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "7.24.7",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.11.1",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "babel-jest": "29.7.0",
+    "babel-loader": "9.2.1",
+    "eslint": "9.10.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
     "path": "^0.12.7",
-    "webpack": "^5.44.0",
-    "webpack-cli": "^4.7.2"
+    "ts-loader": "9.5.1",
+    "typescript": "5.5.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "engineStrict": true,
   "types": "types/cacheu.min.d.ts"
 }

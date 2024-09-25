@@ -1,10 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { resolve } = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: [
-    './src/index.js'
-  ],
+  entry: './src/index.ts',
   output: {
     path: resolve('dist'),
     filename: 'cacheu.min.js',
@@ -14,13 +13,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        test: /\.ts$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
     ]
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      '@': resolve('src'),
+    },
   },
 };

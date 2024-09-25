@@ -3,13 +3,15 @@ node_modules
 package-lock.json
 
 src
-
 test
 
 .gitignore
 .npmignore
 
-.babelrc
-.eslintrc
+.babel.config.json
+.eslintrc.js
+.prettierrc
+jest.config.js
+tsconfig.json
 
 webpack.config.js

@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "> 1%"
+          ]
+        }
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/transform-runtime",
+    "@babel/plugin-transform-private-methods",
+    "@babel/plugin-transform-class-static-block",
+    "@babel/plugin-transform-class-properties"
+  ]
+}
